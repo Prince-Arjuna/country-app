@@ -82,38 +82,6 @@ if __name__ == "__main__":
 
 
 
-# Replace with your OpenWeather API key
-api_key = '84bf864572454152bca3c5b1102de5a6'
-
-def get_weather(country_code):
-    api_url = "https://api.openweathermap.org/data/2.5/weather"
-    
-    params = {
-        'q': f"{country_code}",
-        'appid': api_key,
-        'units': 'metric'  # Use 'imperial' for Fahrenheit
-    }
-    
-    response = requests.get(api_url, params=params)
-    
-    if response.status_code == 200:
-        data = response.json()
-        city_name = data['name']
-        country = data['sys']['country']
-        temperature = data['main']['temp']
-        weather_description = data['weather'][0]['description']
-        
-        print(f"Weather in {country}:\n"
-              f"Temperature: {temperature}°C\n"
-              f"Weather: {weather_description.capitalize()}")
-    else:
-        print(f"Error: {response.status_code} - {response.text}")
-
-if __name__ == "__main__":
-    city = input("Enter country name: ")
-    country_code = input("Enter country code (e.g., 'US', 'GB', 'FR'): ")
-    get_weather(country_code)
-
 
 
 
